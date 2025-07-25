@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+  namespace: expense
+  annotations:
+    nginx.ingress.kubernetes.io/scheme: internet-facing
+    nginx.ingress.kubernetes.io/scheme: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:311141549540:certificate/8581bf84-d914-41eb-9c15-99fa786f69c8
+    alb.ingress.kubernetes.io/group.name: kanthisri
+spec:
+  ingressClassName: alb
+  rules:
+  - host: "expense-dev.sreeaws.space"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: frontend
+            port:
+              number: 80
