@@ -2,6 +2,6 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: backend
-  namespace: backend
+  namespace: expense
 data:
   DB_HOST: mysql-dev.sreeaws.space

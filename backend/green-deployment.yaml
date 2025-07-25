@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-blue
+  name: backend-green
   namespace: expense
   labels:
     app: backend
     tier: backend
     project: expense
-    version: blue
+    version: green
 spec:
   replicas: 1
   selector:
@@ -15,18 +15,18 @@ spec:
       app: backend
       tier: backend
       project: expense
-      version: blue
+      version: green
   template:
     metadata:
       labels:
         app: backend
         tier: backend
         project: expense
-        version: blue
+        version: green
     spec:
       containers:
       - name: nginx
-        image: sreekanthgorantla/backend:1.0.0
+        image: sreekanthgorantla/backend:2.0.0
         envFrom: 
         - configMapRef:
             name: backend
