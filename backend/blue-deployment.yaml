@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: backend-blue
   namespace: expense
   labels:
     app: backend
@@ -24,3 +24,6 @@ spec:
       containers:
       - name: nginx
         image: sreekanthgorantla/backend:1.0.0
+        envFrom: 
+        - configMapRef:
+            name: backend
